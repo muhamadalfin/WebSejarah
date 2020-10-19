@@ -40,6 +40,9 @@
                                   <a class="nav-link" href="<?php echo site_url('');?>">Home</a>
                               </li>
                               <li class="nav-item">
+                                  <a class="nav-link" href="<?php echo site_url('about');?>">About</a>
+                              </li>
+                              <li class="nav-item">
                                   <a class="nav-link" href="<?php echo site_url('pengumuman');?>">Pengumuman</a>
                               </li>
                               <li class="nav-item">
@@ -49,13 +52,7 @@
                                   <a class="nav-link" href="<?php echo site_url('galeri');?>">Gallery</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" href="<?php echo site_url('about');?>">About</a>
-                              </li>
-                              <li class="nav-item">
                                 <a class="nav-link" href="<?php echo site_url('contact');?>">Contact</a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" href="<?php echo site_url('login');?>">Login</a>
                               </li>
                         </ul>
                   </div>
