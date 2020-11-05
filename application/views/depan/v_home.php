@@ -71,37 +71,6 @@
     </div>
 </section>
 <!--//END ABOUT -->
-<!--============================= OUR COURSES =============================-->
-<section class="our_courses">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Artikel Terbaru</h2>
-            </div>
-        </div>
-        <div class="row">
-          <?php foreach ($berita->result() as $row) :?>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-                <div class="courses_box mb-4">
-                    <div class="course-img-wrap">
-                        <img src="<?php echo base_url().'assets/images/'.$row->tulisan_gambar;?>" class="img-fluid" alt="courses-img">
-                    </div>
-                    <!-- // end .course-img-wrap -->
-                    <a href="<?php echo site_url('artikel/'.$row->tulisan_slug);?>" class="course-box-content">
-                        <h3 style="text-align:center;"><?php echo $row->tulisan_judul;?></h3>
-                    </a>
-                </div>
-            </div>
-          <?php endforeach;?>
-        </div> <br>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <a href="<?php echo site_url('artikel');?>" class="btn btn-default btn-courses">View More</a>
-            </div>
-        </div>
-    </div>
-</section>
-<!--//END OUR COURSES -->
 <!--============================= EVENTS =============================-->
 <section class="event">
     <div class="container">
