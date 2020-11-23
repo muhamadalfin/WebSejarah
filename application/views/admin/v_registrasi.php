@@ -28,6 +28,14 @@
     <p class="login-box-msg"> <img width="220px;" src="<?php echo base_url().'theme/images/logohistoria.png'?>"></p><hr/>
 
     <form action="<?php echo site_url().'admin/login/auth'?>" method="post">
+    <div class="form-group has-feedback">
+        <input type="text" name="nama" class="form-control" placeholder="Nama" required>
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="email" name="email" class="form-control" placeholder="Email" required>
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
       <div class="form-group has-feedback">
         <input type="text" name="username" class="form-control" placeholder="Username" required>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -37,19 +45,9 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
-        <div class="col-xs-8">
-          <!--div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> Remember Me
-            </label>
-          </div-->
-          <button onclick="window.location.href='<?php echo site_url('admin/registrasi');?>'" class="btn btn-primary btn-block btn-flat">Registrasi</button>
+        <div class="col-xs-12">
+          <button onclick="window.location.href='#'" class="btn btn-primary btn-block btn-flat">Registrasi</button>
         </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-        </div>
-        <!-- /.col -->
       </div>
     </form>
 
@@ -58,7 +56,7 @@
     <hr/>
     <p><center>Copyright <?php echo date('Y');?> by Proyek <br/> All Right Reserved</center></p>
   </div>
-  <!-- /.login-box-body -->
+  <!-- /.login-box-body -->  
 </div>
 <!-- /.login-box -->
 

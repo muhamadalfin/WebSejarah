@@ -9,9 +9,9 @@ class Download extends CI_Controller{
 	}
 	function index(){
 		$x['data']=$this->m_files->get_all_files();
-		$this->load->view('template/headerDownload',$x);
+		$this->load->view('template/header',$x);
 		$this->load->view('depan/v_download',$x);
-		$this->load->view('template/footerDownload',$x);
+		$this->load->view('template/footer');
 	}
 
 	function get_file(){
