@@ -27,7 +27,7 @@
   <div class="login-box-body">
     <p class="login-box-msg"> <img width="220px;" src="<?php echo base_url().'theme/images/logohistoria.png'?>"></p><hr/>
 
-    <form action="<?php echo site_url().'admin/login/auth'?>" method="post">
+    <form action="<?php echo site_url().'admin/registrasi/aksi_registrasi'?>" method="post">
     <div class="form-group has-feedback">
         <input type="text" name="nama" class="form-control" placeholder="Nama" required>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>

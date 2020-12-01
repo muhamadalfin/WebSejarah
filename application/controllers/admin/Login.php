@@ -25,13 +25,19 @@ class Login extends CI_Controller{
             $this->session->set_userdata('idadmin',$idadmin);
             $this->session->set_userdata('nama',$user_nama);
             redirect('admin/dashboard');
-         }else{
+         }else if($xcadmin['pengguna_level']=='2'){
              $this->session->set_userdata('akses','2');
              $idadmin=$xcadmin['pengguna_id'];
              $user_nama=$xcadmin['pengguna_nama'];
              $this->session->set_userdata('idadmin',$idadmin);
              $this->session->set_userdata('nama',$user_nama);
              redirect('admin/dashboard');
+         }else {
+            $idadmin=$xcadmin['pengguna_id'];
+            $user_nama=$xcadmin['pengguna_nama'];
+            $this->session->set_userdata('idadmin',$idadmin);
+            $this->session->set_userdata('nama',$user_nama);
+            redirect('Home');
          }
 
        }else{
