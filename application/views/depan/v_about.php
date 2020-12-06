@@ -12,7 +12,7 @@
                 </p>
                 <p>Hal ini seiring dengan penguasaan teknologi untuk dimanfaatkan sebaik mungkin,
                   sehingga menciptakan iklim kondusif dalam ranah keilmuan. Dengan konsep yang kontekstual dan efektif,
-                  kami mengejewantahkan nilai-nilai pendidikan yang tertuang dalam visi misi M-School,
+                  kami mengejewantahkan nilai-nilai pendidikan yang tertuang dalam visi misi Historia,
                   sebagai panduan hukum dalam menjabarkan tujuan hakiki pendidikan.
                 </p>
                 </div>
@@ -34,18 +34,18 @@
                     <div class="single-item">
                         <div class="quote">
                             <i class="fa fa-quote-left" aria-hidden="true"></i>
-                            <p class="quote_text">MSCHOOL benar-benar mengagumkan. Saya sangat senang bisa bergabung dengan MSCHOOL dan menjadi siswa terbaik tahun 2018.</p>
+                            <p class="quote_text">Historia benar-benar mengagumkan. Saya sangat senang bisa bergabung dengan Historia dan menjadi siswa terbaik tahun 2018.</p>
                             <div class="testi-img_block">
                                 <img src="<?php echo base_url().'theme/images/student-1.png'?>" class="img-fluid" alt="#">
-                                <p><span>Hernandez Alvaro</span>Siswa Terbaik 2018</p>
+                                <p><span>Hernandez Alvaro</span>Siswa Terbaik 2020</p>
                             </div>
                         </div>
                         <div class="quote">
                             <i class="fa fa-quote-left" aria-hidden="true"></i>
-                            <p class="quote_text">MSCHOOL benar-benar mengagumkan. Saya sangat senang bisa bergabung dengan MSCHOOL dan menjadi siswa terbaik tahun 2017. </p>
+                            <p class="quote_text">Historia benar-benar mengagumkan. Saya sangat senang bisa bergabung dengan Historia dan menjadi siswa terbaik tahun 2017. </p>
                             <div class="testi-img_block">
                                 <img src="<?php echo base_url().'theme/images/student-2.png'?>" class="img-fluid" alt="#">
-                                <p><span>Elanoar Rigby</span>Siswa Terbaik 2017</p>
+                                <p><span>Elanoar Rigby</span>Siswa Terbaik 2020</p>
                             </div>
                         </div>
                     </div>

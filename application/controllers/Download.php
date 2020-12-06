@@ -8,6 +8,7 @@ class Download extends CI_Controller{
 		$this->m_pengunjung->count_visitor();
 	}
 	function index(){
+		$x['title'] = 'Download';
 		$x['data']=$this->m_files->get_all_files();
 		$this->load->view('template/header',$x);
 		$this->load->view('depan/v_download',$x);

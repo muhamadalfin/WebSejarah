@@ -1,20 +1,22 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
+-- version 5.0.1
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 09 Agu 2018 pada 10.27
--- Versi Server: 5.6.17
--- PHP Version: 5.5.12
+-- Generation Time: Dec 06, 2020 at 09:52 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `db_websekolah`
@@ -23,30 +25,21 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_agenda`
+-- Table structure for table `tbl_album`
 --
 
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tbl_album`
---
-
-CREATE TABLE IF NOT EXISTS `tbl_album` (
-  `album_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_album` (
+  `album_id` int(11) NOT NULL,
   `album_nama` varchar(50) DEFAULT NULL,
-  `album_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `album_tanggal` timestamp NULL DEFAULT current_timestamp(),
   `album_pengguna_id` int(11) DEFAULT NULL,
   `album_author` varchar(60) DEFAULT NULL,
-  `album_count` int(11) DEFAULT '0',
-  `album_cover` varchar(40) DEFAULT NULL,
-  PRIMARY KEY (`album_id`),
-  KEY `album_pengguna_id` (`album_pengguna_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `album_count` int(11) DEFAULT 0,
+  `album_cover` varchar(40) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_album`
+-- Dumping data for table `tbl_album`
 --
 
 INSERT INTO `tbl_album` (`album_id`, `album_nama`, `album_tanggal`, `album_pengguna_id`, `album_author`, `album_count`, `album_cover`) VALUES
@@ -57,22 +50,21 @@ INSERT INTO `tbl_album` (`album_id`, `album_nama`, `album_tanggal`, `album_pengg
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_files`
+-- Table structure for table `tbl_files`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_files` (
-  `file_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_files` (
+  `file_id` int(11) NOT NULL,
   `file_judul` varchar(120) DEFAULT NULL,
-  `file_deskripsi` text,
-  `file_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `file_deskripsi` text DEFAULT NULL,
+  `file_tanggal` timestamp NULL DEFAULT current_timestamp(),
   `file_oleh` varchar(60) DEFAULT NULL,
-  `file_download` int(11) DEFAULT '0',
-  `file_data` varchar(120) DEFAULT NULL,
-  PRIMARY KEY (`file_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+  `file_download` int(11) DEFAULT 0,
+  `file_data` varchar(120) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_files`
+-- Dumping data for table `tbl_files`
 --
 
 INSERT INTO `tbl_files` (`file_id`, `file_judul`, `file_deskripsi`, `file_tanggal`, `file_oleh`, `file_download`, `file_data`) VALUES
@@ -91,24 +83,21 @@ INSERT INTO `tbl_files` (`file_id`, `file_judul`, `file_deskripsi`, `file_tangga
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_galeri`
+-- Table structure for table `tbl_galeri`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_galeri` (
-  `galeri_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_galeri` (
+  `galeri_id` int(11) NOT NULL,
   `galeri_judul` varchar(60) DEFAULT NULL,
-  `galeri_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `galeri_tanggal` timestamp NULL DEFAULT current_timestamp(),
   `galeri_gambar` varchar(40) DEFAULT NULL,
   `galeri_album_id` int(11) DEFAULT NULL,
   `galeri_pengguna_id` int(11) DEFAULT NULL,
-  `galeri_author` varchar(60) DEFAULT NULL,
-  PRIMARY KEY (`galeri_id`),
-  KEY `galeri_album_id` (`galeri_album_id`),
-  KEY `galeri_pengguna_id` (`galeri_pengguna_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+  `galeri_author` varchar(60) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_galeri`
+-- Dumping data for table `tbl_galeri`
 --
 
 INSERT INTO `tbl_galeri` (`galeri_id`, `galeri_judul`, `galeri_tanggal`, `galeri_gambar`, `galeri_album_id`, `galeri_pengguna_id`, `galeri_author`) VALUES
@@ -131,11 +120,11 @@ INSERT INTO `tbl_galeri` (`galeri_id`, `galeri_judul`, `galeri_tanggal`, `galeri
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_guru`
+-- Table structure for table `tbl_guru`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_guru` (
-  `guru_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_guru` (
+  `guru_id` int(11) NOT NULL,
   `guru_nip` varchar(30) DEFAULT NULL,
   `guru_nama` varchar(70) DEFAULT NULL,
   `guru_jenkel` varchar(2) DEFAULT NULL,
@@ -143,43 +132,36 @@ CREATE TABLE IF NOT EXISTS `tbl_guru` (
   `guru_tgl_lahir` varchar(80) DEFAULT NULL,
   `guru_mapel` varchar(120) DEFAULT NULL,
   `guru_photo` varchar(40) DEFAULT NULL,
-  `guru_tgl_input` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`guru_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+  `guru_tgl_input` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_guru`
+-- Dumping data for table `tbl_guru`
 --
 
 INSERT INTO `tbl_guru` (`guru_id`, `guru_nip`, `guru_nama`, `guru_jenkel`, `guru_tmp_lahir`, `guru_tgl_lahir`, `guru_mapel`, `guru_photo`, `guru_tgl_input`) VALUES
-(1, '927482658274982', 'M Fikri Setiadi', 'L', 'Padang', '25 September 1993', 'Teknik Komputer', 'f6bbe1e04e78e0d715e9830a605794aa.jpg', '2017-01-26 07:49:43'),
-(2, '927482658274981', 'Thomas Muller', 'L', 'Germany', '25 September 1989', 'Olahgara', NULL, '2017-01-26 13:38:54'),
-(3, '-', 'Joko Subroto', 'L', 'Jakarta', '25 September 1989', 'PPKN, Matematika', NULL, '2017-01-26 13:41:20'),
-(4, '-', 'Kusta Otomo', 'L', 'Jakarta', '25 September 1989', 'Seni Budaya', NULL, '2017-01-26 13:42:08'),
-(5, '-', 'Yuliani Ningsih', 'P', 'Padang', '27 September 1993', 'Bahasa Indonesia', NULL, '2017-01-26 13:42:48'),
-(6, '927482658274993', 'Ari Hidayat', 'L', 'Padang', '25 September 1993', 'Bahasa Inggris', NULL, '2017-01-26 13:43:46'),
-(7, '927482658274998', 'Irma Cantika', 'P', 'Padang', '25 September 1993', 'Bahasa Inggris, IPA', '4200d2514abf45755943526b74474c16.jpg', '2017-01-26 13:45:11'),
-(8, '-', 'Ririn Febriesta', 'P', 'Padang', '27 September 1994', 'Pend. Agama Islam', NULL, '2017-01-27 04:28:23');
+(1, '927482658274982', 'M Fikri Setiadi', 'L', 'Padang', '25 September 1993', 'Sejarah', 'f6bbe1e04e78e0d715e9830a605794aa.jpg', '2020-10-19 07:49:43'),
+(6, '927482658274993', 'Ari Hidayat', 'L', 'Padang', '25 September 1993', 'Sejarah', NULL, '2020-10-20 07:49:43'),
+(7, '927482658274998', 'Irma Cantika', 'P', 'Padang', '25 September 1993', 'Sejarah', '4200d2514abf45755943526b74474c16.jpg', '2020-10-19 07:49:43');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_inbox`
+-- Table structure for table `tbl_inbox`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_inbox` (
-  `inbox_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_inbox` (
+  `inbox_id` int(11) NOT NULL,
   `inbox_nama` varchar(40) DEFAULT NULL,
   `inbox_email` varchar(60) DEFAULT NULL,
   `inbox_kontak` varchar(20) DEFAULT NULL,
-  `inbox_pesan` text,
-  `inbox_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `inbox_status` int(11) DEFAULT '1' COMMENT '1=Belum dilihat, 0=Telah dilihat',
-  PRIMARY KEY (`inbox_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+  `inbox_pesan` text DEFAULT NULL,
+  `inbox_tanggal` timestamp NULL DEFAULT current_timestamp(),
+  `inbox_status` int(11) DEFAULT 1 COMMENT '1=Belum dilihat, 0=Telah dilihat'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_inbox`
+-- Dumping data for table `tbl_inbox`
 --
 
 INSERT INTO `tbl_inbox` (`inbox_id`, `inbox_nama`, `inbox_email`, `inbox_kontak`, `inbox_pesan`, `inbox_tanggal`, `inbox_status`) VALUES
@@ -192,18 +174,17 @@ INSERT INTO `tbl_inbox` (`inbox_id`, `inbox_nama`, `inbox_email`, `inbox_kontak`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_kategori`
+-- Table structure for table `tbl_kategori`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_kategori` (
-  `kategori_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_kategori` (
+  `kategori_id` int(11) NOT NULL,
   `kategori_nama` varchar(30) DEFAULT NULL,
-  `kategori_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`kategori_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+  `kategori_tanggal` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_kategori`
+-- Dumping data for table `tbl_kategori`
 --
 
 INSERT INTO `tbl_kategori` (`kategori_id`, `kategori_nama`, `kategori_tanggal`) VALUES
@@ -217,17 +198,16 @@ INSERT INTO `tbl_kategori` (`kategori_id`, `kategori_nama`, `kategori_tanggal`) 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_kelas`
+-- Table structure for table `tbl_kelas`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_kelas` (
-  `kelas_id` int(11) NOT NULL AUTO_INCREMENT,
-  `kelas_nama` varchar(40) DEFAULT NULL,
-  PRIMARY KEY (`kelas_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+CREATE TABLE `tbl_kelas` (
+  `kelas_id` int(11) NOT NULL,
+  `kelas_nama` varchar(40) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_kelas`
+-- Dumping data for table `tbl_kelas`
 --
 
 INSERT INTO `tbl_kelas` (`kelas_id`, `kelas_nama`) VALUES
@@ -256,24 +236,22 @@ INSERT INTO `tbl_kelas` (`kelas_id`, `kelas_nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_komentar`
+-- Table structure for table `tbl_komentar`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_komentar` (
-  `komentar_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_komentar` (
+  `komentar_id` int(11) NOT NULL,
   `komentar_nama` varchar(30) DEFAULT NULL,
   `komentar_email` varchar(50) DEFAULT NULL,
   `komentar_isi` varchar(120) DEFAULT NULL,
-  `komentar_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `komentar_tanggal` timestamp NULL DEFAULT current_timestamp(),
   `komentar_status` varchar(2) DEFAULT NULL,
   `komentar_tulisan_id` int(11) DEFAULT NULL,
-  `komentar_parent` int(11) DEFAULT '0',
-  PRIMARY KEY (`komentar_id`),
-  KEY `komentar_tulisan_id` (`komentar_tulisan_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `komentar_parent` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_komentar`
+-- Dumping data for table `tbl_komentar`
 --
 
 INSERT INTO `tbl_komentar` (`komentar_id`, `komentar_nama`, `komentar_email`, `komentar_isi`, `komentar_tanggal`, `komentar_status`, `komentar_tulisan_id`, `komentar_parent`) VALUES
@@ -284,175 +262,208 @@ INSERT INTO `tbl_komentar` (`komentar_id`, `komentar_nama`, `komentar_email`, `k
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_log_aktivitas`
+-- Table structure for table `tbl_log_aktivitas`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_log_aktivitas` (
-  `log_id` int(11) NOT NULL AUTO_INCREMENT,
-  `log_nama` text,
-  `log_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+CREATE TABLE `tbl_log_aktivitas` (
+  `log_id` int(11) NOT NULL,
+  `log_nama` text DEFAULT NULL,
+  `log_tanggal` timestamp NULL DEFAULT current_timestamp(),
   `log_ip` varchar(20) DEFAULT NULL,
   `log_pengguna_id` int(11) DEFAULT NULL,
-  `log_icon` blob,
-  `log_jenis_icon` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`log_id`),
-  KEY `log_pengguna_id` (`log_pengguna_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `log_icon` blob DEFAULT NULL,
+  `log_jenis_icon` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_pengguna`
+-- Table structure for table `tbl_pengguna`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_pengguna` (
-  `pengguna_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_pengguna` (
+  `pengguna_id` int(11) NOT NULL,
   `pengguna_nama` varchar(50) DEFAULT NULL,
   `pengguna_moto` varchar(100) DEFAULT NULL,
   `pengguna_jenkel` varchar(2) DEFAULT NULL,
   `pengguna_username` varchar(30) DEFAULT NULL,
   `pengguna_password` varchar(35) DEFAULT NULL,
-  `pengguna_tentang` text,
+  `pengguna_tentang` text DEFAULT NULL,
   `pengguna_email` varchar(50) DEFAULT NULL,
   `pengguna_nohp` varchar(20) DEFAULT NULL,
   `pengguna_facebook` varchar(35) DEFAULT NULL,
   `pengguna_twitter` varchar(35) DEFAULT NULL,
   `pengguna_linkdin` varchar(35) DEFAULT NULL,
   `pengguna_google_plus` varchar(35) DEFAULT NULL,
-  `pengguna_status` int(2) DEFAULT '1',
+  `pengguna_status` int(2) DEFAULT 1,
   `pengguna_level` varchar(3) DEFAULT NULL,
-  `pengguna_register` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `pengguna_photo` varchar(40) DEFAULT NULL,
-  PRIMARY KEY (`pengguna_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `pengguna_register` timestamp NULL DEFAULT current_timestamp(),
+  `pengguna_photo` varchar(40) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_pengguna`
+-- Dumping data for table `tbl_pengguna`
 --
 
 INSERT INTO `tbl_pengguna` (`pengguna_id`, `pengguna_nama`, `pengguna_moto`, `pengguna_jenkel`, `pengguna_username`, `pengguna_password`, `pengguna_tentang`, `pengguna_email`, `pengguna_nohp`, `pengguna_facebook`, `pengguna_twitter`, `pengguna_linkdin`, `pengguna_google_plus`, `pengguna_status`, `pengguna_level`, `pengguna_register`, `pengguna_photo`) VALUES
-(1, 'M Fikri Setiadi', 'Just do it', 'L', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'I am a mountainner. to me mountainerring is a life', 'fikrifiver97@gmail.com', '081277159401', 'facebook.com/m_fikri_setiadi', 'twitter.com/fiver_fiver', '', '', 1, '1', '2016-09-03 06:07:55', 'db5dec647062751f2fb236b9bc3f1c54.png');
+(1, 'Admin Historia', '', 'L', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'I am a mountainner. to me mountainerring is a life', 'historia@gmail.com', '', '', '', '', '', 1, '1', '2016-09-03 06:07:55', 'logoFooter.png'),
+(7, 'aku', NULL, NULL, 'aku', '89ccfac87d8d06db06bf3211cb2d69ed', NULL, 'aku@gmail.com', NULL, NULL, NULL, NULL, NULL, 1, '3', '2020-12-01 03:40:21', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_pengumuman`
+-- Table structure for table `tbl_pengumuman`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_pengumuman` (
-  `pengumuman_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_pengumuman` (
+  `pengumuman_id` int(11) NOT NULL,
   `pengumuman_judul` varchar(150) DEFAULT NULL,
-  `pengumuman_deskripsi` text,
-  `pengumuman_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `pengumuman_author` varchar(60) DEFAULT NULL,
-  PRIMARY KEY (`pengumuman_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `pengumuman_deskripsi` text DEFAULT NULL,
+  `pengumuman_tanggal` timestamp NULL DEFAULT current_timestamp(),
+  `pengumuman_author` varchar(60) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_pengumuman`
+-- Dumping data for table `tbl_pengumuman`
 --
 
 INSERT INTO `tbl_pengumuman` (`pengumuman_id`, `pengumuman_judul`, `pengumuman_deskripsi`, `pengumuman_tanggal`, `pengumuman_author`) VALUES
-(1, 'Pengumuman Libur Semester Ganjil Tahun Ajaran 2016-2017', 'Libur semester ganjil tahun ajaran 2016-2017 dimulai dari tanggal 3 Maret 2017 sampai dengan tanggal 7 Maret 207.', '2017-01-21 01:17:30', 'M Fikri Setiadi'),
-(2, 'Pengumuman Pembagian Raport Semester Ganjil Tahun Ajaran 2016-2017', 'Menjelang berakhirnya proses belajar-mengajar di semester ganjil tahun ajaran 2016-2017, maka akan diadakan pembagian hasil belajar/raport pada tanggal 4 Maret 2017 pukul 07.30 WIB.\r\nYang bertempat di M-Sekolah. Raport diambil oleh orang tua/wali kelas murid masing-masing', '2017-01-21 01:16:20', 'M Fikri Setiadi'),
-(3, 'Pengumuman Peresmian dan Launching Website Perdana M-Sekolah', 'Peresmian dan launching website resmi M-Sekolah akan diadakan pada hari 23 Desember 2016 pukul 10.00, bertepatan dengan pembagian raport semester ganjil tahun ajaran 2016-2017', '2017-01-22 07:16:16', 'M Fikri Setiadi'),
-(4, 'Pengumuman Proses Belajar Mengajar di Semester Genap Tahun Ajaran 2016-2017', 'Setelah libur semester ganjil tahun ajaran 2016-2017, proses belajar mengajar di semester genap tahun ajaran 2016-2017 mulai aktif kembali tanggal 2 Maret 2017.', '2017-01-22 07:15:28', 'M Fikri Setiadi');
+(1, 'Pengumuman Update Terbaru', 'Materi sejarah Indonesia terbaru yang telah di update bisa di download di halaman download', '2020-11-02 01:17:30', 'Admin'),
+(2, 'Pengumuman Update Terbaru', 'Materi sejarah Indonesia terbaru yang telah di update bisa di download di halaman download', '2020-11-03 01:17:30', 'Admin'),
+(5, 'Pengumuman Update Terbaru', 'Materi sejarah Indonesia terbaru yang telah di update bisa di download di halaman download', '2020-11-03 01:17:30', 'Admin');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_pengunjung`
+-- Table structure for table `tbl_pengunjung`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_pengunjung` (
-  `pengunjung_id` int(11) NOT NULL AUTO_INCREMENT,
-  `pengunjung_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+CREATE TABLE `tbl_pengunjung` (
+  `pengunjung_id` int(11) NOT NULL,
+  `pengunjung_tanggal` timestamp NULL DEFAULT current_timestamp(),
   `pengunjung_ip` varchar(40) DEFAULT NULL,
-  `pengunjung_perangkat` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`pengunjung_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=931 ;
+  `pengunjung_perangkat` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_pengunjung`
+-- Dumping data for table `tbl_pengunjung`
 --
 
 INSERT INTO `tbl_pengunjung` (`pengunjung_id`, `pengunjung_tanggal`, `pengunjung_ip`, `pengunjung_perangkat`) VALUES
-(930, '2018-08-09 08:04:59', '::1', 'Chrome');
+(930, '2018-08-09 08:04:59', '::1', 'Chrome'),
+(931, '2020-10-18 13:14:56', '::1', 'Firefox'),
+(932, '2020-10-18 23:48:11', '::1', 'Firefox'),
+(933, '2020-11-05 01:05:16', '::1', 'Firefox'),
+(934, '2020-11-23 22:58:40', '::1', 'Firefox'),
+(935, '2020-12-01 02:46:26', '::1', 'Firefox'),
+(936, '2020-12-03 09:41:12', '::1', 'Firefox'),
+(937, '2020-12-06 07:25:29', '127.0.0.1', 'Firefox'),
+(938, '2020-12-06 08:23:56', '::1', 'Firefox');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_siswa`
+-- Table structure for table `tbl_siswa`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_siswa` (
-  `siswa_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_siswa` (
+  `siswa_id` int(11) NOT NULL,
   `siswa_nis` varchar(20) DEFAULT NULL,
   `siswa_nama` varchar(70) DEFAULT NULL,
   `siswa_jenkel` varchar(2) DEFAULT NULL,
   `siswa_kelas_id` int(11) DEFAULT NULL,
-  `siswa_photo` varchar(40) DEFAULT NULL,
-  PRIMARY KEY (`siswa_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+  `siswa_photo` varchar(40) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_siswa`
+-- Dumping data for table `tbl_siswa`
 --
 
 INSERT INTO `tbl_siswa` (`siswa_id`, `siswa_nis`, `siswa_nama`, `siswa_jenkel`, `siswa_kelas_id`, `siswa_photo`) VALUES
-(1, '9287482', 'Alvaro Sanchez', 'L', 8, '083d547659a2d4bb15c0322d15955da5.png'),
-(2, '9287483', 'Ririn Cantika', 'P', 8, '74eec6ad37550cc12fe8fa83d46878af.jpg'),
-(4, '123083', 'Ari Hidayat', 'L', 1, 'e371e67618ad53c99de380782c373023.png'),
-(5, '123084', 'Irma Chaiyo', 'P', 1, '1e148b42c71562841ba3018fc97b748a.png'),
-(6, '123085', 'Nadila Ginting', 'P', 1, '8125da21f903803b6992214967239ab3.png'),
-(7, '123086', 'Anna Marina', 'P', 1, '33eaf3e3faf28a0fe31670c022f641f1.png'),
-(8, '123086', 'Dhea Lubis', 'P', 1, '03e651410e969c3c26e8e0d35380470d.png'),
-(9, '123087', 'Nadia Ginting', 'P', 1, 'd7823f8d98d376c085aa284a54d63264.png'),
-(10, '123088', 'Mita Febrina', 'P', 1, 'eca0280a4a57c911ee68b8318d1e517f.png'),
-(11, '123089', 'Elizabeth ', 'P', 1, 'ec1232a08d650bc8c3197c9db95a7fc8.png'),
-(12, '123090', 'Della Guswono', 'P', 1, '6c82fce13bb3eff1fd2e897b2c3cfeeb.png');
+(1, '9287482', 'Alvaro Sanchez', 'L', 10, '083d547659a2d4bb15c0322d15955da5.png'),
+(2, '9287483', 'Ririn Cantika', 'P', 10, '74eec6ad37550cc12fe8fa83d46878af.jpg'),
+(4, '123083', 'Ari Hidayat', 'L', 10, 'e371e67618ad53c99de380782c373023.png'),
+(5, '123084', 'Irma Chaiyo', 'P', 10, '1e148b42c71562841ba3018fc97b748a.png'),
+(6, '123085', 'Nadila Ginting', 'P', 11, '8125da21f903803b6992214967239ab3.png'),
+(7, '123086', 'Anna Marina', 'P', 11, '33eaf3e3faf28a0fe31670c022f641f1.png'),
+(8, '123086', 'Dhea Lubis', 'P', 11, '03e651410e969c3c26e8e0d35380470d.png'),
+(9, '123087', 'Nadia Ginting', 'P', 12, 'd7823f8d98d376c085aa284a54d63264.png'),
+(10, '123088', 'Mita Febrina', 'P', 12, 'eca0280a4a57c911ee68b8318d1e517f.png'),
+(11, '123089', 'Elizabeth ', 'P', 12, 'ec1232a08d650bc8c3197c9db95a7fc8.png'),
+(12, '123090', 'Della Guswono', 'P', 12, '6c82fce13bb3eff1fd2e897b2c3cfeeb.png');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_testimoni`
+-- Table structure for table `tbl_soal`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_testimoni` (
-  `testimoni_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_soal` (
+  `id_soal` int(5) NOT NULL,
+  `soal` text NOT NULL,
+  `a` varchar(30) NOT NULL,
+  `b` varchar(30) NOT NULL,
+  `c` varchar(30) NOT NULL,
+  `d` varchar(30) NOT NULL,
+  `knc_jawaban` varchar(30) NOT NULL,
+  `gambar` varchar(100) NOT NULL,
+  `tanggal` date NOT NULL,
+  `token` varchar(50) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_soal`
+--
+
+INSERT INTO `tbl_soal` (`id_soal`, `soal`, `a`, `b`, `c`, `d`, `knc_jawaban`, `gambar`, `tanggal`, `token`) VALUES
+(1, 'Berikut ini unsur-unsur sejarah yang paling cepat mengalami perubahan adalah unsur...', 'waktu', 'ruang', 'perilaku manusia', 'lingkungan sosial', 'a', '', '0000-00-00', 'EE22ZIJ'),
+(2, 'Sejarah akan dapat dipahami oleh generasi penerus dari masyarakat yang terdahulu sebagai suatu cermin untuk menunju kemajuan dalam kehidupan bermasyarakat berbangsa dan bernegara. Hal ini termasuk cara memahami sejarah melihat konteks....', 'masa transisi', 'masa kini', 'masa yang akan datang', 'masa lampau', 'b', '', '0000-00-00', 'EE22ZIJ'),
+(3, 'Pada awalanya kolonialisme adalah kelanjutan dari patrimonialisme, di mana kebijakan kolonial hanya mengadopsi kebiasaan lama. Hal ini disebut dengan istilah....', 'temporal', 'spasial', 'kontinuitas', 'perubahan', 'c', '', '0000-00-00', 'EE22ZIJ'),
+(4, 'Dimensi waktu dalam sejarah disebut....', 'spasial', 'temporal', 'struktur', 'masa', 'b', '', '0000-00-00', 'EE22ZIJ'),
+(5, 'Unsur sejarah yang berhubungan dengan aspek geografis adalah....', 'waktu', 'ruang', 'manusia', 'tempat', 'b', '', '0000-00-00', 'EE22ZIJ'),
+(6, 'Salah satu contoh konsep perubahan dan keberlanjutan dalam kehidupan bernegara adalah.....', 'pembangunan', 'reformasi', 'revolusi', 'rekonsiliasi', 'a', '', '0000-00-00', 'EE22ZIJ'),
+(7, 'Makna harfiah sejarah sebagai sesuatu yang telah terjadi, terdapat pada kata....', 'syajarotun', 'silsilah', 'history', 'geschicht', 'd', '', '0000-00-00', 'EE22ZIJ'),
+(8, 'Sejarah berasal dari bahasa Arab, yaitu syajarotun yang berarti....', 'batang', 'daun', 'pohon/kayu', 'ranting', 'c', '', '0000-00-00', 'EE22ZIJ'),
+(9, 'Sejarah mempunyai arti “terjadi” dari kata “geschieden” yang berasal dari bahasa....', 'Spanyol', 'Belanda', 'Italia', 'Swiss', 'b', '', '0000-00-00', 'EE22ZIJ'),
+(10, 'Sejarah adalah catatan tentang masyarakat umat manusia atau peradaban dunia, tentang perubahan-perubahan yang terjadi pada watak masyarakat, dikemukakan oleh...', 'Nugroho Nutosusanto', 'Patick Gardiner', 'Ibnu Khaldun', 'J.V. Bruce', 'c', '', '0000-00-00', 'EE22ZIJ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_testimoni`
+--
+
+CREATE TABLE `tbl_testimoni` (
+  `testimoni_id` int(11) NOT NULL,
   `testimoni_nama` varchar(30) DEFAULT NULL,
   `testimoni_isi` varchar(120) DEFAULT NULL,
   `testimoni_email` varchar(35) DEFAULT NULL,
-  `testimoni_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`testimoni_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `testimoni_tanggal` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_tulisan`
+-- Table structure for table `tbl_tulisan`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_tulisan` (
-  `tulisan_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_tulisan` (
+  `tulisan_id` int(11) NOT NULL,
   `tulisan_judul` varchar(100) DEFAULT NULL,
-  `tulisan_isi` text,
-  `tulisan_tanggal` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `tulisan_isi` text DEFAULT NULL,
+  `tulisan_tanggal` timestamp NULL DEFAULT current_timestamp(),
   `tulisan_kategori_id` int(11) DEFAULT NULL,
   `tulisan_kategori_nama` varchar(30) DEFAULT NULL,
-  `tulisan_views` int(11) DEFAULT '0',
+  `tulisan_views` int(11) DEFAULT 0,
   `tulisan_gambar` varchar(40) DEFAULT NULL,
   `tulisan_pengguna_id` int(11) DEFAULT NULL,
   `tulisan_author` varchar(40) DEFAULT NULL,
-  `tulisan_img_slider` int(2) NOT NULL DEFAULT '0',
-  `tulisan_slug` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`tulisan_id`),
-  KEY `tulisan_kategori_id` (`tulisan_kategori_id`),
-  KEY `tulisan_pengguna_id` (`tulisan_pengguna_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+  `tulisan_img_slider` int(2) NOT NULL DEFAULT 0,
+  `tulisan_slug` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_tulisan`
+-- Dumping data for table `tbl_tulisan`
 --
 
 INSERT INTO `tbl_tulisan` (`tulisan_id`, `tulisan_judul`, `tulisan_isi`, `tulisan_tanggal`, `tulisan_kategori_id`, `tulisan_kategori_nama`, `tulisan_views`, `tulisan_gambar`, `tulisan_pengguna_id`, `tulisan_author`, `tulisan_img_slider`, `tulisan_slug`) VALUES
@@ -461,6 +472,214 @@ INSERT INTO `tbl_tulisan` (`tulisan_id`, `tulisan_judul`, `tulisan_isi`, `tulisa
 (23, 'Pelaksanaan Ujian Nasional MSchool', '<p>Pelaksanaan UN (Ujian Nasional) di sekolah M-Sekolah berlangsung tentram dan damai. Terlihat ketenangan terpancar diwajah siswa berprestasi.&nbsp; Ini adalah sampel artikel Ini adalah sampel artikel&nbsp; Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n', '2017-05-17 09:41:30', 1, 'Pendidikan', 3, '12bfb1953df800c59835a2796f8c6619.jpg', 1, 'M Fikri Setiadi', 0, 'pelaksanaan-ujian-nasional-mschool'),
 (24, 'Proses belajar mengajar MSchool', '<p>Proses belajar mengajar di sekolah m-sekolah berlangsung menyenangkan. Didukung oleh instruktur yang fun dengan metode mengajar yang tidak biasa. Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel a Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel .</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n\r\n<p>Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel Ini adalah sampel artikel.</p>\r\n', '2017-05-17 09:46:29', 1, 'Pendidikan', 162, 'ea114dc1ec5275560a5ef3238fd04722.jpg', 1, 'M Fikri Setiadi', 0, 'proses-belajar-mengajar-mschool'),
 (25, 'iPhone 8 Baru Mengungkapkan Fitur Mengecewakan', '<p>Apple CEO Tim Cook delivers the opening keynote address the 2017 Apple.</p>\r\n\r\n<p><br />\r\nSudah lama sekali sejak Apple mampu menyimpan kejutan nyata dari beledu digital dan mengungkapkan &#39;satu hal&#39; yang sebenarnya selama sebuah keynote. Fase desain dan prototyping yang panjang, ditambah dengan rantai pasokan yang diperluas, telah menghasilkan garis manufaktur yang bocor.<br />\r\n<br />\r\nTariklah permintaan yang tak terpuaskan dari si geekerati dan Anda tidak akan pernah bisa menyimpan rahasianya ... bahkan jika penonton akan berpura-pura bahwa segala sesuatu yang dikatakan Tim Cook adalah sebuah wahyu.<br />\r\n<br />\r\nSemuanya di tampilkan untuk portofolio iPhone baru, meskipun jika kita jujur ??tidak ada hal baru yang bisa dilihat. Ini hanya Tim Cook dan timnya yang membuat model tahun lalu &#39;sedikit lebih baik&#39; dan mengajukan konsumen proposisi yang sama seperti setiap produsen smartphone lainnya.<br />\r\n<br />\r\nMungkin aku berharap terlalu banyak dari Apple. Pengulangan Timey dari mimpi Silicon Valley tidak dibangun dengan risiko, mendorong amplop, atau bereksperimen dengan bentuk atau fungsinya. Bagaimana Tim Cook bisa mendorong inovasi ketika begitu banyak kekaisarannya dibangun di seputar kebutuhan akan penjualan siklis iPhone yang terjamin? Jika penjualan smartphone turun, maka yayasan Cupertino akan berada dalam bahaya.<br />\r\n<br />\r\nJawaban Apple untuk ini adalah iPhone 8. Sementara iPhone 7S dan iPhone 7S Plus menjaga harapan, iPhone 8 bisa bereksperimen dengan bentuk, harga, dan kekuatan. Ini adalah handset yang akan mendorong batas teknologi Apple dengan layar OLED yang cerah dan jelas di bawah kaca melengkung yang membentuk bagian luarnya. Inilah smartphone yang membawa kekuatan magis wireless charging ke ekosistem iOS dan akan menawarkan pengenalan wajah untuk keamanan.<br />\r\n<br />\r\nYang semua terdengar hebat tapi itu satu set poin peluru yang bisa diterapkan ke banyak handset Android terkemuka yang ada di pasaran saat ini. Bahkan dengan andalannya yang maju untuk tahun 2017, Apple melakukan sedikit lebih banyak daripada mengenalkan teknologi yang ada ke portofolio iOS.<br />\r\n<br />\r\nItu tidak terlihat seperti ini beberapa bulan yang lalu. Fitur yang diduga dikeluarkan oleh Apple dari iPhone 8 memamerkan beberapa pemikiran terbaru tentang perangkat mobile, termasuk pengisian daya nirkabel jarak jauh dan sensor biometrik tertanam di bawah layar kaca. Ini perlahan-lahan telah terbantahkan oleh industri rumahan dan desas-desus, sampai-sampai kita cukup tahu apa yang terjadi dari iPhone 8.<br />\r\n<br />\r\nTentu saja iPhone 8 (dan lebih dari kemungkinan iPhone 7S dan 7S Plus) akan mendapat keuntungan dari perubahan pada konstruksi interior. Akan ada pencantuman iOS 11 dan integrasi perangkat lunak yang ketat ke perangkat keras. Akan ada anggukan Apple untuk kesederhanaan di UI dan aplikasi pihak ketiga akan segera menghadirkan fitur lanjutan kepada pengguna rata-rata.<br />\r\n<br />\r\nIni bukan perubahan sepele, tapi yang menyoroti ini adalah menjelaskan bagaimana sosis dibuat. Mereka adalah rakit tweak untuk paket yang sama. Anda bisa menambahkan kancing diamante ke gaun Anda, mengganti lapisannya, dan mengeluarkan pinggulnya karena tahun-tahun yang lewat, tapi pakaiannya tetap sama seperti yang orang lihat berkali-kali. Itu cukup bagi bisnis Apple untuk terus melakukannya dengan baik dan membuat pemegang saham tetap bahagia, namun Anda tidak dapat terus kembali ke bidang yang sama dan berharap untuk tetap berada di puncak permainan smartphone. Sesuatu harus diberikan.<br />\r\n<br />\r\nPortofolio Apple 2017 membajak bidang yang sama persis dengan tahun-tahun sebelumnya. Tulang punggung penjualan akan terdiri dari iPhone 7S dan iPhone 7S Plus yang berulang-ulang saat Tim Cook kembali menanam benih di alur yang sama persis seperti model sebelumnya. IPhone 8 dapat diluncurkan tepat waktu, namun stok akan sulit didapat dan Apple akan, sekali lagi, tidak merilis angka penjualan. Ini akan menjadi hal baru yang menarik dan berkilau, tapi mari kita panggil apa adanya.</p>\r\n\r\n<p>Tim Cook akan menyilangkan jari-jarinya sehingga cukup banyak orang yang senang bisa &#39;membeli iPhone lain&#39; dan terus menggelontorkannya tanpa melihat persaingan. IPhone 8 adalah Apple yang bermain mengejar kemajuan teknologi kompetisi, dengan harapan tidak ada yang memperhatikan bahwa iPhone Baru Kaisar tidak semudah yang terlihat.</p>\r\n', '2018-08-08 13:26:08', 5, 'Penelitian', 3, 'a0b99616241c9aded7f2a02661798d98.jpg', 1, 'M Fikri Setiadi', 0, 'iphone-8-baru-mengungkapkan-fitur-mengecewakan');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tbl_album`
+--
+ALTER TABLE `tbl_album`
+  ADD PRIMARY KEY (`album_id`),
+  ADD KEY `album_pengguna_id` (`album_pengguna_id`);
+
+--
+-- Indexes for table `tbl_files`
+--
+ALTER TABLE `tbl_files`
+  ADD PRIMARY KEY (`file_id`);
+
+--
+-- Indexes for table `tbl_galeri`
+--
+ALTER TABLE `tbl_galeri`
+  ADD PRIMARY KEY (`galeri_id`),
+  ADD KEY `galeri_album_id` (`galeri_album_id`),
+  ADD KEY `galeri_pengguna_id` (`galeri_pengguna_id`);
+
+--
+-- Indexes for table `tbl_guru`
+--
+ALTER TABLE `tbl_guru`
+  ADD PRIMARY KEY (`guru_id`);
+
+--
+-- Indexes for table `tbl_inbox`
+--
+ALTER TABLE `tbl_inbox`
+  ADD PRIMARY KEY (`inbox_id`);
+
+--
+-- Indexes for table `tbl_kategori`
+--
+ALTER TABLE `tbl_kategori`
+  ADD PRIMARY KEY (`kategori_id`);
+
+--
+-- Indexes for table `tbl_kelas`
+--
+ALTER TABLE `tbl_kelas`
+  ADD PRIMARY KEY (`kelas_id`);
+
+--
+-- Indexes for table `tbl_komentar`
+--
+ALTER TABLE `tbl_komentar`
+  ADD PRIMARY KEY (`komentar_id`),
+  ADD KEY `komentar_tulisan_id` (`komentar_tulisan_id`);
+
+--
+-- Indexes for table `tbl_log_aktivitas`
+--
+ALTER TABLE `tbl_log_aktivitas`
+  ADD PRIMARY KEY (`log_id`),
+  ADD KEY `log_pengguna_id` (`log_pengguna_id`);
+
+--
+-- Indexes for table `tbl_pengguna`
+--
+ALTER TABLE `tbl_pengguna`
+  ADD PRIMARY KEY (`pengguna_id`);
+
+--
+-- Indexes for table `tbl_pengumuman`
+--
+ALTER TABLE `tbl_pengumuman`
+  ADD PRIMARY KEY (`pengumuman_id`);
+
+--
+-- Indexes for table `tbl_pengunjung`
+--
+ALTER TABLE `tbl_pengunjung`
+  ADD PRIMARY KEY (`pengunjung_id`);
+
+--
+-- Indexes for table `tbl_siswa`
+--
+ALTER TABLE `tbl_siswa`
+  ADD PRIMARY KEY (`siswa_id`);
+
+--
+-- Indexes for table `tbl_soal`
+--
+ALTER TABLE `tbl_soal`
+  ADD PRIMARY KEY (`id_soal`);
+
+--
+-- Indexes for table `tbl_testimoni`
+--
+ALTER TABLE `tbl_testimoni`
+  ADD PRIMARY KEY (`testimoni_id`);
+
+--
+-- Indexes for table `tbl_tulisan`
+--
+ALTER TABLE `tbl_tulisan`
+  ADD PRIMARY KEY (`tulisan_id`),
+  ADD KEY `tulisan_kategori_id` (`tulisan_kategori_id`),
+  ADD KEY `tulisan_pengguna_id` (`tulisan_pengguna_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_album`
+--
+ALTER TABLE `tbl_album`
+  MODIFY `album_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tbl_files`
+--
+ALTER TABLE `tbl_files`
+  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `tbl_galeri`
+--
+ALTER TABLE `tbl_galeri`
+  MODIFY `galeri_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `tbl_guru`
+--
+ALTER TABLE `tbl_guru`
+  MODIFY `guru_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `tbl_inbox`
+--
+ALTER TABLE `tbl_inbox`
+  MODIFY `inbox_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `tbl_kategori`
+--
+ALTER TABLE `tbl_kategori`
+  MODIFY `kategori_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `tbl_kelas`
+--
+ALTER TABLE `tbl_kelas`
+  MODIFY `kelas_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `tbl_komentar`
+--
+ALTER TABLE `tbl_komentar`
+  MODIFY `komentar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tbl_log_aktivitas`
+--
+ALTER TABLE `tbl_log_aktivitas`
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_pengguna`
+--
+ALTER TABLE `tbl_pengguna`
+  MODIFY `pengguna_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `tbl_pengumuman`
+--
+ALTER TABLE `tbl_pengumuman`
+  MODIFY `pengumuman_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tbl_pengunjung`
+--
+ALTER TABLE `tbl_pengunjung`
+  MODIFY `pengunjung_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=939;
+
+--
+-- AUTO_INCREMENT for table `tbl_siswa`
+--
+ALTER TABLE `tbl_siswa`
+  MODIFY `siswa_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `tbl_soal`
+--
+ALTER TABLE `tbl_soal`
+  MODIFY `id_soal` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `tbl_testimoni`
+--
+ALTER TABLE `tbl_testimoni`
+  MODIFY `testimoni_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_tulisan`
+--
+ALTER TABLE `tbl_tulisan`
+  MODIFY `tulisan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
