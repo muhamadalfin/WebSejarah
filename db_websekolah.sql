@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2020 at 09:52 AM
+-- Generation Time: Dec 06, 2020 at 02:09 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -288,6 +288,7 @@ CREATE TABLE `tbl_pengguna` (
   `pengguna_jenkel` varchar(2) DEFAULT NULL,
   `pengguna_username` varchar(30) DEFAULT NULL,
   `pengguna_password` varchar(35) DEFAULT NULL,
+  `nis_nip` varchar(40) NOT NULL,
   `pengguna_tentang` text DEFAULT NULL,
   `pengguna_email` varchar(50) DEFAULT NULL,
   `pengguna_nohp` varchar(20) DEFAULT NULL,
@@ -305,9 +306,10 @@ CREATE TABLE `tbl_pengguna` (
 -- Dumping data for table `tbl_pengguna`
 --
 
-INSERT INTO `tbl_pengguna` (`pengguna_id`, `pengguna_nama`, `pengguna_moto`, `pengguna_jenkel`, `pengguna_username`, `pengguna_password`, `pengguna_tentang`, `pengguna_email`, `pengguna_nohp`, `pengguna_facebook`, `pengguna_twitter`, `pengguna_linkdin`, `pengguna_google_plus`, `pengguna_status`, `pengguna_level`, `pengguna_register`, `pengguna_photo`) VALUES
-(1, 'Admin Historia', '', 'L', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'I am a mountainner. to me mountainerring is a life', 'historia@gmail.com', '', '', '', '', '', 1, '1', '2016-09-03 06:07:55', 'logoFooter.png'),
-(7, 'aku', NULL, NULL, 'aku', '89ccfac87d8d06db06bf3211cb2d69ed', NULL, 'aku@gmail.com', NULL, NULL, NULL, NULL, NULL, 1, '3', '2020-12-01 03:40:21', NULL);
+INSERT INTO `tbl_pengguna` (`pengguna_id`, `pengguna_nama`, `pengguna_moto`, `pengguna_jenkel`, `pengguna_username`, `pengguna_password`, `nis_nip`, `pengguna_tentang`, `pengguna_email`, `pengguna_nohp`, `pengguna_facebook`, `pengguna_twitter`, `pengguna_linkdin`, `pengguna_google_plus`, `pengguna_status`, `pengguna_level`, `pengguna_register`, `pengguna_photo`) VALUES
+(1, 'Admin Historia', '', 'L', 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'I am a mountainner. to me mountainerring is a life', 'historia@gmail.com', '', '', '', '', '', 1, '1', '2016-09-03 06:07:55', 'logoFooter.png'),
+(7, 'aku', NULL, NULL, 'aku', '89ccfac87d8d06db06bf3211cb2d69ed', '', NULL, 'aku@gmail.com', NULL, NULL, NULL, NULL, NULL, 1, '3', '2020-12-01 03:40:21', NULL),
+(10, 'dia', NULL, NULL, 'dia', '465b1f70b50166b6d05397fca8d600b0', '1234567890', NULL, 'dia@gmail.com', NULL, NULL, NULL, NULL, NULL, 1, '3', '2020-12-06 13:08:55', NULL);
 
 -- --------------------------------------------------------
 
@@ -642,7 +644,7 @@ ALTER TABLE `tbl_log_aktivitas`
 -- AUTO_INCREMENT for table `tbl_pengguna`
 --
 ALTER TABLE `tbl_pengguna`
-  MODIFY `pengguna_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `pengguna_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_pengumuman`
