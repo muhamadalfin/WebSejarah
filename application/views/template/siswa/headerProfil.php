@@ -19,6 +19,11 @@
     <link rel="stylesheet" href="<?php echo base_url().'theme/css/slick.css'?>">
     <link rel="stylesheet" href="<?php echo base_url().'theme/css/slick-theme.css'?>">
     <link rel="stylesheet" href="<?php echo base_url().'theme/css/owl.carousel.min.css'?>">
+        <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Main CSS -->
     <link href="<?php echo base_url().'theme/css/style.css'?>" rel="stylesheet">
     <?php
@@ -54,31 +59,34 @@
                           <span class="icon-menu"></span>
                       </button>
                       <a href="<?php echo site_url('');?>" class="navbar-brand nav-brand2"><img class="img img-responsive" width="200px;" src="<?php echo base_url().'theme/images/logohistoria.png'?>"></a>
-                      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                      <!--div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown"-->
                           <ul class="navbar-nav">
                               <li class="nav-item">
-                                  <a class="nav-link" href="<?php echo site_url('');?>">Home</a>
+                                  <a class="nav-link" href="<?php echo site_url('siswa/home');?>">Home</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" href="<?php echo site_url('pengumuman');?>">Pengumuman</a>
+                                  <a class="nav-link" href="<?php echo site_url('siswa/token');?>">Soal</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" href="<?php echo site_url('download');?>">Download</a>
-                              </li>
-                              <!--li class="nav-item">
-                                  <a class="nav-link" href="<//?php echo site_url('galeri');?>">Gallery</a>
-                              </li-->
-                              <li class="nav-item">
-                                  <a class="nav-link" href="<?php echo site_url('about');?>">About</a>
+                                  <a class="nav-link" href="<?php echo site_url('siswa/pengumuman');?>">Pengumuman</a>
                               </li>
                               <li class="nav-item">
-                                <a class="nav-link" href="<?php echo site_url('contact');?>">Contact</a>
+                                  <a class="nav-link" href="<?php echo site_url('siswa/download');?>">Download</a>
                               </li>
                               <li class="nav-item">
-                                <a class="nav-link" href="<?php echo site_url('admin/login');?>">Login</a>
+                                  <a class="nav-link" href="<?php echo site_url('siswa/profil');?>">Profil</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" href="<?php echo site_url('siswa/about');?>">Nilai</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="<?php echo site_url('siswa/contact');?>">Contact</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="<?php echo site_url('admin/login/logout');?>">Logout</a>
                               </li>
                         </ul>
-                  </div>
+                    <!--/div-->
                 </nav>
               </div>
             </div>

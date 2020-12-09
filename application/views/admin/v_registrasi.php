@@ -33,8 +33,16 @@
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" name="nis_nip" class="form-control" placeholder="NIS / NIP" required>
+        <input type="text" name="nis_nip" class="form-control" placeholder="NIS / NIP / NIK" required>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="level" id="inlineRadio1" value="3">
+        <label class="form-check-label" for="inlineRadio1">NIS</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input class="form-check-input" type="radio" name="level" id="inlineRadio2" value="2">
+        <label class="form-check-label" for="inlineRadio2">NIP</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input class="form-check-input" type="radio" name="level" id="inlineRadio2" value="4">
+        <label class="form-check-label" for="inlineRadio2">NIK</label>
       </div>
       <div class="form-group has-feedback">
         <input type="email" name="email" class="form-control" placeholder="Email" required>
@@ -48,14 +56,14 @@
         <input type="password" name="password" class="form-control" placeholder="Password" required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
-      <div class="form-group has-feedback">
+      <!--div class="form-group has-feedback">
           <select id="level" name="level" class="form-control">
           <option value="#">-------</option>
             <option value="2">Guru</option>
             <option value="3">Siswa</option>
             <option value="4">Pengunjung</option>
           </select> 
-      </div>
+      </div-->
       <div class="row">
         <div class="col-xs-12">
           <button onclick="window.location.href='#'" class="btn btn-primary btn-block btn-flat">Registrasi</button>

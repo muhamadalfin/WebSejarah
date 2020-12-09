@@ -48,9 +48,9 @@
                               <li class="nav-item">
                                   <a class="nav-link" href="<?php echo site_url('download');?>">Download</a>
                               </li>
-                              <li class="nav-item">
-                                  <a class="nav-link" href="<?php echo site_url('galeri');?>">Gallery</a>
-                              </li>
+                              <!--li class="nav-item">
+                                  <a class="nav-link" href="<//?php echo site_url('galeri');?>">Gallery</a>
+                              </li-->
                               <li class="nav-item">
                                 <a class="nav-link" href="<?php echo site_url('contact');?>">Contact</a>
                               </li>

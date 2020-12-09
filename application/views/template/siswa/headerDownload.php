@@ -49,10 +49,10 @@
                                   <a class="nav-link" href="<?php echo site_url('siswa/download');?>">Download</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" href="<?php echo site_url('siswa/galeri');?>">Gallery</a>
+                                  <a class="nav-link" href="<?php echo site_url('siswa/profil');?>">Profil</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" href="<?php echo site_url('siswa/about');?>">About</a>
+                                  <a class="nav-link" href="<?php echo site_url('siswa/about');?>">Nilai</a>
                               </li>
                               <li class="nav-item">
                                 <a class="nav-link" href="<?php echo site_url('siswa/contact');?>">Contact</a>
