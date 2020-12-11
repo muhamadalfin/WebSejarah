@@ -2,6 +2,9 @@
 class Download extends CI_Controller{
 	function __construct(){
 		parent::__construct();
+		if(empty($this->session->userdata('login'))){
+			redirect('admin/login');
+		}
 		$this->load->model('m_files');
 		$this->load->helper('download');
 		$this->load->model('m_pengunjung');

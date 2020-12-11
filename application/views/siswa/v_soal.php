@@ -15,13 +15,19 @@ if (!$koneksi) {
 die("Connection failed: " . mysqli_connect_error());
 }
 // Check Token
-
 if(isset($_POST['submit'])){
   $token = $_POST["token"];
   $_SESSION['token'] = $token;
+  $query = mysqli_query($koneksi, "select token from tbl_nilai WHERE token = '$token'");
+  $cektoken = mysqli_fetch_array($query);
+  if($token == $cektoken['token']){
+    echo "<script>alert('Anda telah mengerjakan soal');document.location='token'</script>";
+  }
+  
 }     
-    echo "<br><h3><center>Latihan Soal Historia</center></h3>
-            <b>Latihan Soal Pilihan Ganda Sejarah</b>";
+
+    echo "<br><h3><center>Soal Historia</center></h3>
+            <b>Pilihan Ganda Sejarah</b>";
     echo "<br><br>";
     echo "<div style='width:100%; border: 1px solid #EBEBEB; overflow:scroll;height:700px;'>";
     echo '<table width="100%" border="0">';
@@ -32,6 +38,7 @@ if(isset($_POST['submit'])){
         while($row =mysqli_fetch_array($hasil))
         {
             $id=$row["id_soal"];
+            $materi=$row["materi"];
             $pertanyaan=$row["soal"];
             $pilihan_a=$row["a"];
             $pilihan_b=$row["b"];
@@ -41,6 +48,7 @@ if(isset($_POST['submit'])){
             ?>
             <form name="form1" method="post" action="<?php echo site_url().'siswa/jawab'?>">
             <input type="hidden" name="id[]" value=<?php echo $id; ?>>
+            <input type="hidden" name="materi" value=<?php echo $materi; ?>>
             <input type="hidden" name="jumlah" value=<?php echo $jumlah; ?>>
             <tr>
                   <td width="17"><font color="#000000"><?php echo $urut=$urut+1; ?></font></td>

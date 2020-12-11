@@ -31,26 +31,32 @@ class Login extends CI_Controller{
                 $this->session->set_userdata('akses','2');
                 $idadmin=$xcadmin['pengguna_id'];
                 $user_nama=$xcadmin['pengguna_nama'];
-                $nip=$xcadmin['nis_nip'];
+                $nip=$xcadmin['nis_nip_nik'];
+                $pass=$xcadmin['pengguna_password'];
                 $this->session->set_userdata('idadmin',$idadmin);
                 $this->session->set_userdata('nama',$user_nama);
                 $this->session->set_userdata('nip',$nip);
+                $this->session->set_userdata('password',$pass);
                 redirect('admin/dashboard');
             }else if($xcadmin['pengguna_level']=='3'){
                 $this->session->set_userdata('akses','3');
                 $idadmin=$xcadmin['pengguna_id'];
                 $user_nama=$xcadmin['pengguna_nama'];
-                $nis=$xcadmin['nis_nip'];
+                $nis=$xcadmin['nis_nip_nik'];
+                $pass=$xcadmin['pengguna_password'];
                 $this->session->set_userdata('idadmin',$idadmin);
                 $this->session->set_userdata('nama',$user_nama);
                 $this->session->set_userdata('nis',$nis);
+                $this->session->set_userdata('password',$pass);
                 redirect('siswa/home');
             }else{
                 $this->session->set_userdata('akses','4');
                 $idadmin=$xcadmin['pengguna_id'];
                 $user_nama=$xcadmin['pengguna_nama'];
+                $pass=$xcadmin['pengguna_password'];
                 $this->session->set_userdata('idadmin',$idadmin);
                 $this->session->set_userdata('nama',$user_nama);
+                $this->session->set_userdata('password',$pass);
                 redirect('home');
             }
 

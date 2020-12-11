@@ -72,7 +72,7 @@
                                   <a class="nav-link" href="<?php echo site_url('siswa/profil');?>">Profil</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" href="<?php echo site_url('siswa/about');?>">Nilai</a>
+                                  <a class="nav-link" href="<?php echo site_url('siswa/nilai');?>">Nilai</a>
                               </li>
                               <li class="nav-item">
                                 <a class="nav-link" href="<?php echo site_url('siswa/contact');?>">Contact</a>

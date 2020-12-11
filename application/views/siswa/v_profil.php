@@ -19,6 +19,16 @@
                     <div class="card-body">
                     <?php foreach($data_siswa->result() as $sis):?>
                         <center><h5 class="card-title"><?= $sis->siswa_nama; ?></h5></center>
+                        <?php foreach($data_pengguna->result() as $peng):?>
+                        <p class="card=text">
+                            <label for=""><b>Username :</b></label>
+                            <?= $peng->pengguna_username; ?>
+                        </p>
+                        <p class="card=text">
+                            <label for=""><b>Email :</b></label>
+                            <?= $peng->pengguna_email; ?>
+                        </p>
+                        <?php endforeach; ?>
                         <p class="card=text">
                             <label for=""><b>NIS :</b></label>
                             <?= $sis->siswa_nis; ?>
@@ -31,17 +41,9 @@
                             <label for=""><b>Kelas :</b></label>
                             <?= $sis->siswa_kelas_id; ?>
                         </p>
-                        <!--p class="card=text">
-                            <label for=""><b>Level :</b></label>
-                            <//?= $siswa['level']; ?>
-                        </p>
-                        <p class="card=text">
-                            <label for=""><b>Status :</b></label>
-                            <//?= $siswa['status']; ?>
-                        </p-->
-                        <?php endforeach; ?>
-                        <a href="<?= base_url(); ?>administrator" class="btn btn-primary">kembali</a>
+                        <a href="<?= base_url();?>siswa/edit/edit/<?= $sis->siswa_nis;?>" class="btn btn-success">Edit</a>
                     </div>
+                    <?php endforeach; ?>
             </div>
         </div>
     </div>

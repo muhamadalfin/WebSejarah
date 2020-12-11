@@ -21,7 +21,9 @@ if (!isset($_SESSION['token'])){
             $pilihan=$_POST["pilihan"];
             $id_soal=$_POST["id"];
             $jumlah=$_POST['jumlah'];
+            $materi=$_POST['materi'];
             $token = $_SESSION['token'];
+            $nis = $_SESSION['nis'];
             
             $score=0;
             $benar=0;
@@ -72,10 +74,16 @@ if (!isset($_SESSION['token'])){
          <tr><td>Jumlah Jawaban Salah</td><td> : $salah</td></tr>
          <tr><td>Jumlah Jawaban Kosong</td><td>: $kosong</td></tr>
         </table></div>";*/
+        $sql="insert into tbl_nilai (nis,materi,token,nilai) values
+        ('$nis','$materi','$token','$score')";
+        
+        $hasil=mysqli_query($koneksi,$sql);
+        
         $_SESSION['soalBenar'] = $benar;
         $_SESSION['soalSalah'] = $salah;
         $_SESSION['soalKosong'] = $kosong;
         $_SESSION['score'] = $score;
+
 
     header("Location: hasil");
 ?>
