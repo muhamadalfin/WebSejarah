@@ -59,14 +59,17 @@
 <section class="clearfix about about-style2">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                <h2>Selamat datang</h2>
-               <p>Halaman Website Sejarah</p>
+               <p>Udah siap belajar sejarah belum ?</p>
+               <p>Mari kita bersama - sama belajar tentang sejarah yang ada di Indonesia untuk mengenal lebih dalam 
+                    tentang sejarah apa yang telah terjadi di masa lalu di Negeri kita tercinta Indonesia
+               </p>
 
             </div>
-            <div class="col-md-4">
-                <img src="<?php echo base_url().'theme/images/welcome.png'?>" class="img-fluid about-img" alt="#">
-            </div>
+            <!--div class="col-md-4">
+                <img src="<//?php echo base_url().'theme/images/welcome.png'?>" class="img-fluid about-img" alt="#">
+            </div-->
         </div>
     </div>
 </section>

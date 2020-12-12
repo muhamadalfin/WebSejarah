@@ -33,7 +33,7 @@
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" name="nis_nip" class="form-control" placeholder="NIS / NIP / NIK" required>
+        <input type="text" name="nis_nip" class="form-control" placeholder="NIS / NIP" required>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-check form-check-inline">
@@ -41,8 +41,8 @@
         <label class="form-check-label" for="inlineRadio1">NIS</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input class="form-check-input" type="radio" name="level" id="inlineRadio2" value="2">
         <label class="form-check-label" for="inlineRadio2">NIP</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input class="form-check-input" type="radio" name="level" id="inlineRadio2" value="4">
-        <label class="form-check-label" for="inlineRadio2">NIK</label>
+        <!--input class="form-check-input" type="radio" name="level" id="inlineRadio2" value="4">
+        <label class="form-check-label" for="inlineRadio2">NIK</label-->
       </div>
       <div class="form-group has-feedback">
         <input type="email" name="email" class="form-control" placeholder="Email" required>

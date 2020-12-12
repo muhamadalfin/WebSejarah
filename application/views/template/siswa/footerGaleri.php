@@ -11,25 +11,26 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="sitemap">
-                        <h3>Menu Utama</h3>
-                        <ul>
-                            <li><a href="<?php echo site_url();?>">Home</a></li>
-                            <li><a href="<?php echo site_url('about');?>">About</a></li>
-                            <li><a href="<?php echo site_url('galeri');?>">Gallery</a></li>
-                            <li><a href="<?php echo site_url('contact');?>">Contact</a></li>
-                        </ul>
-                    </div>
+                <div class="sitemap">
+                    <h3>Menu Utama</h3>
+                    <ul>
+                        <li><a href="<?php echo site_url('siswa/home');?>">Home</a></li>
+                        <li><a href="<?php echo site_url('siswa/contact');?>">Contact</a></li>
+                        <li><a href="<?php echo site_url('siswa/profil');?>">Profil</a></li>
+                    </ul>
                 </div>
-                <div class="col-md-3">
-                  <div class="sitemap">
-                      <h3>Akademik</h3>
-                      <ul>
-                          <li><a href="<?php echo site_url('pengumuman');?>">Pengumuman</a></li>
-                          <li><a href="<?php echo site_url('download');?>">Download</a></li>
-                      </ul>
-                  </div>
-                </div>
+            </div>
+            <div class="col-md-3">
+              <div class="sitemap">
+                  <h3>Akademik</h3>
+                  <ul>
+                      <li><a href="<?php echo site_url('siswa/token');?>">Soal</a></li>
+                      <li><a href="<?php echo site_url('siswa/pengumuman');?>">Pengumuman</a></li>
+                      <li><a href="<?php echo site_url('siswa/download');?>">Download</a></li>
+                      <li><a href="<?php echo site_url('siswa/nilai');?>">Nilai</a></li>
+                  </ul>
+              </div>
+            </div>
                 <div class="col-md-3">
                     <div class="address">
                         <h3>Hubungi Kami</h3>

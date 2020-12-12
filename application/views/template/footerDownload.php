@@ -15,7 +15,6 @@
                             <ul>
                                 <li><a href="<?php echo site_url();?>">Home</a></li>
                                 <li><a href="<?php echo site_url('about');?>">About</a></li>
-                                <li><a href="<?php echo site_url('galeri');?>">Gallery</a></li>
                                 <li><a href="<?php echo site_url('contact');?>">Contact</a></li>
                             </ul>
                         </div>

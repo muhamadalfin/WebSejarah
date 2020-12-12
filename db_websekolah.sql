@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2020 at 02:09 PM
+-- Generation Time: Dec 12, 2020 at 01:30 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -278,6 +278,28 @@ CREATE TABLE `tbl_log_aktivitas` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_nilai`
+--
+
+CREATE TABLE `tbl_nilai` (
+  `id` int(11) NOT NULL,
+  `nis` varchar(20) NOT NULL,
+  `materi` varchar(30) NOT NULL,
+  `token` varchar(20) NOT NULL,
+  `waktu` timestamp NULL DEFAULT current_timestamp(),
+  `nilai` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_nilai`
+--
+
+INSERT INTO `tbl_nilai` (`id`, `nis`, `materi`, `token`, `waktu`, `nilai`) VALUES
+(1, '9287481', 'Quis 1', 'EE22ZIJ', '2020-12-10 03:59:20', '30');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_pengguna`
 --
 
@@ -288,7 +310,7 @@ CREATE TABLE `tbl_pengguna` (
   `pengguna_jenkel` varchar(2) DEFAULT NULL,
   `pengguna_username` varchar(30) DEFAULT NULL,
   `pengguna_password` varchar(35) DEFAULT NULL,
-  `nis_nip` varchar(40) NOT NULL,
+  `nis_nip_nik` varchar(40) NOT NULL,
   `pengguna_tentang` text DEFAULT NULL,
   `pengguna_email` varchar(50) DEFAULT NULL,
   `pengguna_nohp` varchar(20) DEFAULT NULL,
@@ -306,10 +328,10 @@ CREATE TABLE `tbl_pengguna` (
 -- Dumping data for table `tbl_pengguna`
 --
 
-INSERT INTO `tbl_pengguna` (`pengguna_id`, `pengguna_nama`, `pengguna_moto`, `pengguna_jenkel`, `pengguna_username`, `pengguna_password`, `nis_nip`, `pengguna_tentang`, `pengguna_email`, `pengguna_nohp`, `pengguna_facebook`, `pengguna_twitter`, `pengguna_linkdin`, `pengguna_google_plus`, `pengguna_status`, `pengguna_level`, `pengguna_register`, `pengguna_photo`) VALUES
+INSERT INTO `tbl_pengguna` (`pengguna_id`, `pengguna_nama`, `pengguna_moto`, `pengguna_jenkel`, `pengguna_username`, `pengguna_password`, `nis_nip_nik`, `pengguna_tentang`, `pengguna_email`, `pengguna_nohp`, `pengguna_facebook`, `pengguna_twitter`, `pengguna_linkdin`, `pengguna_google_plus`, `pengguna_status`, `pengguna_level`, `pengguna_register`, `pengguna_photo`) VALUES
 (1, 'Admin Historia', '', 'L', 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'I am a mountainner. to me mountainerring is a life', 'historia@gmail.com', '', '', '', '', '', 1, '1', '2016-09-03 06:07:55', 'logoFooter.png'),
 (7, 'aku', NULL, NULL, 'aku', '89ccfac87d8d06db06bf3211cb2d69ed', '', NULL, 'aku@gmail.com', NULL, NULL, NULL, NULL, NULL, 1, '3', '2020-12-01 03:40:21', NULL),
-(10, 'dia', NULL, NULL, 'dia', '465b1f70b50166b6d05397fca8d600b0', '1234567890', NULL, 'dia@gmail.com', NULL, NULL, NULL, NULL, NULL, 1, '3', '2020-12-06 13:08:55', NULL);
+(12, 'Alvaro Sanchez', NULL, 'L', 'diaa', '465b1f70b50166b6d05397fca8d600b0', '9287481', NULL, 'dia@gmail.com', NULL, NULL, NULL, NULL, NULL, 1, '3', '2020-12-09 13:08:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -360,7 +382,11 @@ INSERT INTO `tbl_pengunjung` (`pengunjung_id`, `pengunjung_tanggal`, `pengunjung
 (935, '2020-12-01 02:46:26', '::1', 'Firefox'),
 (936, '2020-12-03 09:41:12', '::1', 'Firefox'),
 (937, '2020-12-06 07:25:29', '127.0.0.1', 'Firefox'),
-(938, '2020-12-06 08:23:56', '::1', 'Firefox');
+(938, '2020-12-06 08:23:56', '::1', 'Firefox'),
+(939, '2020-12-09 12:52:53', '::1', 'Firefox'),
+(940, '2020-12-09 23:19:33', '::1', 'Firefox'),
+(941, '2020-12-10 23:47:34', '::1', 'Firefox'),
+(942, '2020-12-12 12:12:05', '::1', 'Firefox');
 
 -- --------------------------------------------------------
 
@@ -382,7 +408,7 @@ CREATE TABLE `tbl_siswa` (
 --
 
 INSERT INTO `tbl_siswa` (`siswa_id`, `siswa_nis`, `siswa_nama`, `siswa_jenkel`, `siswa_kelas_id`, `siswa_photo`) VALUES
-(1, '9287482', 'Alvaro Sanchez', 'L', 10, '083d547659a2d4bb15c0322d15955da5.png'),
+(1, '9287481', 'Alvaro Sanchez', 'L', 10, '083d547659a2d4bb15c0322d15955da5.png'),
 (2, '9287483', 'Ririn Cantika', 'P', 10, '74eec6ad37550cc12fe8fa83d46878af.jpg'),
 (4, '123083', 'Ari Hidayat', 'L', 10, 'e371e67618ad53c99de380782c373023.png'),
 (5, '123084', 'Irma Chaiyo', 'P', 10, '1e148b42c71562841ba3018fc97b748a.png'),
@@ -402,6 +428,7 @@ INSERT INTO `tbl_siswa` (`siswa_id`, `siswa_nis`, `siswa_nama`, `siswa_jenkel`, 
 
 CREATE TABLE `tbl_soal` (
   `id_soal` int(5) NOT NULL,
+  `materi` varchar(30) NOT NULL,
   `soal` text NOT NULL,
   `a` varchar(30) NOT NULL,
   `b` varchar(30) NOT NULL,
@@ -417,31 +444,17 @@ CREATE TABLE `tbl_soal` (
 -- Dumping data for table `tbl_soal`
 --
 
-INSERT INTO `tbl_soal` (`id_soal`, `soal`, `a`, `b`, `c`, `d`, `knc_jawaban`, `gambar`, `tanggal`, `token`) VALUES
-(1, 'Berikut ini unsur-unsur sejarah yang paling cepat mengalami perubahan adalah unsur...', 'waktu', 'ruang', 'perilaku manusia', 'lingkungan sosial', 'a', '', '0000-00-00', 'EE22ZIJ'),
-(2, 'Sejarah akan dapat dipahami oleh generasi penerus dari masyarakat yang terdahulu sebagai suatu cermin untuk menunju kemajuan dalam kehidupan bermasyarakat berbangsa dan bernegara. Hal ini termasuk cara memahami sejarah melihat konteks....', 'masa transisi', 'masa kini', 'masa yang akan datang', 'masa lampau', 'b', '', '0000-00-00', 'EE22ZIJ'),
-(3, 'Pada awalanya kolonialisme adalah kelanjutan dari patrimonialisme, di mana kebijakan kolonial hanya mengadopsi kebiasaan lama. Hal ini disebut dengan istilah....', 'temporal', 'spasial', 'kontinuitas', 'perubahan', 'c', '', '0000-00-00', 'EE22ZIJ'),
-(4, 'Dimensi waktu dalam sejarah disebut....', 'spasial', 'temporal', 'struktur', 'masa', 'b', '', '0000-00-00', 'EE22ZIJ'),
-(5, 'Unsur sejarah yang berhubungan dengan aspek geografis adalah....', 'waktu', 'ruang', 'manusia', 'tempat', 'b', '', '0000-00-00', 'EE22ZIJ'),
-(6, 'Salah satu contoh konsep perubahan dan keberlanjutan dalam kehidupan bernegara adalah.....', 'pembangunan', 'reformasi', 'revolusi', 'rekonsiliasi', 'a', '', '0000-00-00', 'EE22ZIJ'),
-(7, 'Makna harfiah sejarah sebagai sesuatu yang telah terjadi, terdapat pada kata....', 'syajarotun', 'silsilah', 'history', 'geschicht', 'd', '', '0000-00-00', 'EE22ZIJ'),
-(8, 'Sejarah berasal dari bahasa Arab, yaitu syajarotun yang berarti....', 'batang', 'daun', 'pohon/kayu', 'ranting', 'c', '', '0000-00-00', 'EE22ZIJ'),
-(9, 'Sejarah mempunyai arti “terjadi” dari kata “geschieden” yang berasal dari bahasa....', 'Spanyol', 'Belanda', 'Italia', 'Swiss', 'b', '', '0000-00-00', 'EE22ZIJ'),
-(10, 'Sejarah adalah catatan tentang masyarakat umat manusia atau peradaban dunia, tentang perubahan-perubahan yang terjadi pada watak masyarakat, dikemukakan oleh...', 'Nugroho Nutosusanto', 'Patick Gardiner', 'Ibnu Khaldun', 'J.V. Bruce', 'c', '', '0000-00-00', 'EE22ZIJ');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_testimoni`
---
-
-CREATE TABLE `tbl_testimoni` (
-  `testimoni_id` int(11) NOT NULL,
-  `testimoni_nama` varchar(30) DEFAULT NULL,
-  `testimoni_isi` varchar(120) DEFAULT NULL,
-  `testimoni_email` varchar(35) DEFAULT NULL,
-  `testimoni_tanggal` timestamp NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `tbl_soal` (`id_soal`, `materi`, `soal`, `a`, `b`, `c`, `d`, `knc_jawaban`, `gambar`, `tanggal`, `token`) VALUES
+(1, 'Quis 1', 'Berikut ini unsur-unsur sejarah yang paling cepat mengalami perubahan adalah unsur...', 'waktu', 'ruang', 'perilaku manusia', 'lingkungan sosial', 'a', '', '0000-00-00', 'EE22ZIJ'),
+(2, 'Quis 1', 'Sejarah akan dapat dipahami oleh generasi penerus dari masyarakat yang terdahulu sebagai suatu cermin untuk menunju kemajuan dalam kehidupan bermasyarakat berbangsa dan bernegara. Hal ini termasuk cara memahami sejarah melihat konteks....', 'masa transisi', 'masa kini', 'masa yang akan datang', 'masa lampau', 'b', '', '0000-00-00', 'EE22ZIJ'),
+(3, 'Quis 1', 'Pada awalanya kolonialisme adalah kelanjutan dari patrimonialisme, di mana kebijakan kolonial hanya mengadopsi kebiasaan lama. Hal ini disebut dengan istilah....', 'temporal', 'spasial', 'kontinuitas', 'perubahan', 'c', '', '0000-00-00', 'EE22ZIJ'),
+(4, 'Quis 1', 'Dimensi waktu dalam sejarah disebut....', 'spasial', 'temporal', 'struktur', 'masa', 'b', '', '0000-00-00', 'EE22ZIJ'),
+(5, 'Quis 1', 'Unsur sejarah yang berhubungan dengan aspek geografis adalah....', 'waktu', 'ruang', 'manusia', 'tempat', 'b', '', '0000-00-00', 'EE22ZIJ'),
+(6, 'Quis 1', 'Salah satu contoh konsep perubahan dan keberlanjutan dalam kehidupan bernegara adalah.....', 'pembangunan', 'reformasi', 'revolusi', 'rekonsiliasi', 'a', '', '0000-00-00', 'EE22ZIJ'),
+(7, 'Quis 1', 'Makna harfiah sejarah sebagai sesuatu yang telah terjadi, terdapat pada kata....', 'syajarotun', 'silsilah', 'history', 'geschicht', 'd', '', '0000-00-00', 'EE22ZIJ'),
+(8, 'Quis 1', 'Sejarah berasal dari bahasa Arab, yaitu syajarotun yang berarti....', 'batang', 'daun', 'pohon/kayu', 'ranting', 'c', '', '0000-00-00', 'EE22ZIJ'),
+(9, 'Quis 1', 'Sejarah mempunyai arti “terjadi” dari kata “geschieden” yang berasal dari bahasa....', 'Spanyol', 'Belanda', 'Italia', 'Swiss', 'b', '', '0000-00-00', 'EE22ZIJ'),
+(10, 'Quis 1', 'Sejarah adalah catatan tentang masyarakat umat manusia atau peradaban dunia, tentang perubahan-perubahan yang terjadi pada watak masyarakat, dikemukakan oleh...', 'Nugroho Nutosusanto', 'Patick Gardiner', 'Ibnu Khaldun', 'J.V. Bruce', 'c', '', '0000-00-00', 'EE22ZIJ');
 
 -- --------------------------------------------------------
 
@@ -539,6 +552,12 @@ ALTER TABLE `tbl_log_aktivitas`
   ADD KEY `log_pengguna_id` (`log_pengguna_id`);
 
 --
+-- Indexes for table `tbl_nilai`
+--
+ALTER TABLE `tbl_nilai`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_pengguna`
 --
 ALTER TABLE `tbl_pengguna`
@@ -567,12 +586,6 @@ ALTER TABLE `tbl_siswa`
 --
 ALTER TABLE `tbl_soal`
   ADD PRIMARY KEY (`id_soal`);
-
---
--- Indexes for table `tbl_testimoni`
---
-ALTER TABLE `tbl_testimoni`
-  ADD PRIMARY KEY (`testimoni_id`);
 
 --
 -- Indexes for table `tbl_tulisan`
@@ -641,10 +654,16 @@ ALTER TABLE `tbl_log_aktivitas`
   MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `tbl_nilai`
+--
+ALTER TABLE `tbl_nilai`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tbl_pengguna`
 --
 ALTER TABLE `tbl_pengguna`
-  MODIFY `pengguna_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `pengguna_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_pengumuman`
@@ -656,7 +675,7 @@ ALTER TABLE `tbl_pengumuman`
 -- AUTO_INCREMENT for table `tbl_pengunjung`
 --
 ALTER TABLE `tbl_pengunjung`
-  MODIFY `pengunjung_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=939;
+  MODIFY `pengunjung_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=943;
 
 --
 -- AUTO_INCREMENT for table `tbl_siswa`
@@ -669,12 +688,6 @@ ALTER TABLE `tbl_siswa`
 --
 ALTER TABLE `tbl_soal`
   MODIFY `id_soal` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
---
--- AUTO_INCREMENT for table `tbl_testimoni`
---
-ALTER TABLE `tbl_testimoni`
-  MODIFY `testimoni_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_tulisan`
