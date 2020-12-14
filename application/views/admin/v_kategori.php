@@ -232,7 +232,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2017 <a href="http://mfikri.com">M Fikri Setiadi</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; Proyek Team 4</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->
