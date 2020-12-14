@@ -19,11 +19,12 @@ if(isset($_POST['submit'])){
   $token = $_POST["token"];
   $_SESSION['token'] = $token;
   $query = mysqli_query($koneksi, "select token from tbl_nilai WHERE token = '$token'");
-  $cektoken = mysqli_fetch_array($query);
-  if($token == $cektoken['token']){
-    echo "<script>alert('Anda telah mengerjakan soal');document.location='token'</script>";
+  while($row =mysqli_fetch_array($query))
+  {
+      if($row['token'] != NULL ){
+          echo "<script>alert('Anda telah mengerjakan soal');document.location='token'</script>";
+      }
   }
-  
 }     
 
     echo "<br><h3><center>Soal Historia</center></h3>
