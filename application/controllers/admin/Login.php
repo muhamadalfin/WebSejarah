@@ -37,7 +37,7 @@ class Login extends CI_Controller{
                 $this->session->set_userdata('nama',$user_nama);
                 $this->session->set_userdata('nip',$nip);
                 $this->session->set_userdata('password',$pass);
-                redirect('admin/dashboard');
+                redirect('guru/dashboard');
             }else if($xcadmin['pengguna_level']=='3'){
                 $this->session->set_userdata('akses','3');
                 $idadmin=$xcadmin['pengguna_id'];

@@ -18,17 +18,24 @@ die("Connection failed: " . mysqli_connect_error());
 if(isset($_POST['submit'])){
   $token = $_POST["token"];
   $_SESSION['token'] = $token;
+<<<<<<< HEAD
   $query = mysqli_query($koneksi, "select * from tbl_nilai WHERE token = '$token'");
   //$cektoken = mysqli_fetch_array($query);
+=======
+  $query = mysqli_query($koneksi, "select token from tbl_nilai WHERE token = '$token'");
+>>>>>>> c736cd77352c003c1c5e4ccb94e6bbd563f7032d
   while($row =mysqli_fetch_array($query))
   {
       if($row['token'] != NULL ){
           echo "<script>alert('Anda telah mengerjakan soal');document.location='token'</script>";
       }
   }
+<<<<<<< HEAD
   //var_dump($cektoken);
   
   
+=======
+>>>>>>> c736cd77352c003c1c5e4ccb94e6bbd563f7032d
 }     
 
     echo "<br><h3><center>Soal Historia</center></h3>
