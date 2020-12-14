@@ -18,11 +18,16 @@ die("Connection failed: " . mysqli_connect_error());
 if(isset($_POST['submit'])){
   $token = $_POST["token"];
   $_SESSION['token'] = $token;
-  $query = mysqli_query($koneksi, "select token from tbl_nilai WHERE token = '$token'");
-  $cektoken = mysqli_fetch_array($query);
-  if($token == $cektoken['token']){
-    echo "<script>alert('Anda telah mengerjakan soal');document.location='token'</script>";
+  $query = mysqli_query($koneksi, "select * from tbl_nilai WHERE token = '$token'");
+  //$cektoken = mysqli_fetch_array($query);
+  while($row =mysqli_fetch_array($query))
+  {
+      if($row['token'] != NULL ){
+          echo "<script>alert('Anda telah mengerjakan soal');document.location='token'</script>";
+      }
   }
+  //var_dump($cektoken);
+  
   
 }     
 

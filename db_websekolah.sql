@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2020 at 01:30 PM
+-- Generation Time: Dec 14, 2020 at 03:14 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -386,7 +386,8 @@ INSERT INTO `tbl_pengunjung` (`pengunjung_id`, `pengunjung_tanggal`, `pengunjung
 (939, '2020-12-09 12:52:53', '::1', 'Firefox'),
 (940, '2020-12-09 23:19:33', '::1', 'Firefox'),
 (941, '2020-12-10 23:47:34', '::1', 'Firefox'),
-(942, '2020-12-12 12:12:05', '::1', 'Firefox');
+(942, '2020-12-12 12:12:05', '::1', 'Firefox'),
+(943, '2020-12-14 14:13:40', '::1', 'Firefox');
 
 -- --------------------------------------------------------
 
@@ -675,7 +676,7 @@ ALTER TABLE `tbl_pengumuman`
 -- AUTO_INCREMENT for table `tbl_pengunjung`
 --
 ALTER TABLE `tbl_pengunjung`
-  MODIFY `pengunjung_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=943;
+  MODIFY `pengunjung_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=944;
 
 --
 -- AUTO_INCREMENT for table `tbl_siswa`

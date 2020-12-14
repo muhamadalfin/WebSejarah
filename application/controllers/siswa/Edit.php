@@ -29,8 +29,8 @@ class Edit extends CI_Controller {
             }
         }else{
             $this->load->view('template/siswa/headerProfil',$data);
-			$this->load->view('siswa/v_isiBiodata',$data);
-			$this->load->view('template/siswa/footer',$data);
+			$this->load->view('siswa/v_biodata',$data);
+			//$this->load->view('template/siswa/footer',$data);
         }
     }
 
