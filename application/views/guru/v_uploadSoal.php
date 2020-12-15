@@ -103,7 +103,7 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Nilai Siswa</h3>
+              <h3 class="box-title">Upload Soal</h3>
 
             </div>
             <!-- /.box-header -->
