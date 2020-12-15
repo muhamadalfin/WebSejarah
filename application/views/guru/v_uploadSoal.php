@@ -71,8 +71,8 @@
           </a>
         </li>
         
-        <li class="active">
-          <a href="<?php echo base_url().'guru/uploadsoal'?>">
+        <li>
+          <a href="<?php echo base_url().'guru/nilai'?>">
             <i class="fa fa-graduation-cap"></i> <span>Nilai</span>
             <span class="pull-right-container">
               <small class="label pull-right"></small>
@@ -93,12 +93,120 @@
     </section>
     <!-- /.sidebar -->
   </aside>
-  <div class="content-wrapper">
-  <section class="content">
-      <!-- Info boxes -->
+  
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    
+
       <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Nilai Siswa</h3>
+
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  
+                <div class="container">
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Input Soal</div>
+                <div class="card-body">
+                <?php
+                        if (validation_errors()) {
+                            echo '<div class="alert alert-danger" role="alert">'.validation_errors().'</div>';
+                        }
+                    ?>
+                    <?php if($this->session->flashdata('flash-data')):?>
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    Data Soal <strong> Berhasil </strong> <?= $this->session->flashdata('flash-data');?>
+                                    <button type="button" class="close" data-dissmiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif;?>
+                    <form action="<?php echo site_url().'guru/uploadsoal/submit'?>" method="post">
+                        <div class="form-group">
+                            <label for="token">Token</label>
+                            <input type="text" class="form-control" id="token" name="token" value="">
+                            <?= form_error('Token'); ?>
+                        </div>
+                        <div class="form-group">
+                            <label for="materi">Materi</label>
+                            <input type="text" class="form-control" id="materi" name="materi" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="soal">Soal</label>
+                            <input type="text" class="form-control" id="soal" name="soal" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="a">pilihan a</label>
+                            <input type="text" class="form-control" id="a" name="a" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="b">pilihan b</label>
+                            <input type="text" class="form-control" id="b" name="b" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="c">pilihan c</label>
+                            <input type="text" class="form-control" id="c" name="c" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="d">pilihan d</label>
+                            <input type="text" class="form-control" id="d" name="d" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="kc">Pilih Kunci Jawaban</label>
+                        </div>
+                        <div class="form-check form-check-inline" required>
+                            <input class="form-check-input" type="radio" name="kc" id="inlineRadio1" value="a">
+                            <label class="form-check-label" for="inlineRadio1">A</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input class="form-check-input" type="radio" name="kc" id="inlineRadio2" value="b">
+                            <label class="form-check-label" for="inlineRadio2">B</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input class="form-check-input" type="radio" name="kc" id="inlineRadio1" value="c">
+                            <label class="form-check-label" for="inlineRadio1">C</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input class="form-check-input" type="radio" name="kc" id="inlineRadio2" value="d">
+                            <label class="form-check-label" for="inlineRadio2">D</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </div><br>
+                        
+                        <div class="form-group">
+                        </div>
+                        <button type="submit" name="submit" class="btn btn-primary float-right">Simpan</button>
+                    </form>
+                </div>
+        </div>
+    </div>
+</div>
+<br>
+                  <!-- /.chart-responsive -->
+                </div>
+                <!-- /.col -->
+
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- ./box-body -->
+
+            <!-- /.box-footer -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+         
+
+          <!-- /.box -->
         </div>
         <!-- /.col -->
       </div>
@@ -107,6 +215,12 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+
+
+</div>
+<!-- ./wrapper -->
   
 <!-- jQuery 2.2.3 -->
 <script src="<?php echo base_url().'assets/plugins/jQuery/jquery-2.2.3.min.js'?>"></script>
